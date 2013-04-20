@@ -23,14 +23,17 @@ public class Fibonacci {
 	}
 
 	/**
-	 * 入力された引数の桁数に最初に到達するフィボナッチ数列の値を表示する関数
+	 * 入力された引数の桁数に最初に到達するフィボナッチ数列を返す関数
 	 * */
 	private static FibonacciClass Disp(Integer number) {
 
 		FibonacciClass result = new FibonacciClass();
 
 		int i = 1;
-		//n桁の数字＝10のn-1乗より大きい数字
+		/*
+		 * フィボナッチ数列の値が n桁の数字(10のn-1乗以上の数字)になったとき
+		 * そのフィボナッチ数列の情報を返す
+		 */
 		while (result.value < (int)Math.pow(10, (double)(number - 1))) {
 			result.value = getFibonacciValue(i);
 			result.term = i;
@@ -42,6 +45,7 @@ public class Fibonacci {
 
 	/**
 	 * 引数の項のフィボナッチ数列の値を返す
+	 * フィボナッチ数列：F(n) = F(n-1) + F(n-2)
 	 * */
 	private static Integer getFibonacciValue(Integer number){
 
@@ -51,7 +55,7 @@ public class Fibonacci {
 		//第2項の値
 		Integer F2 = 1;
 
-		Integer result = null;
+		Integer result = 0;
 
 		if (number == 1) {
 			result = F1;
@@ -64,6 +68,9 @@ public class Fibonacci {
 		return result;
 	}
 
+	/**
+	 * フィボナッチ数列の項数(term)と値(value)をもつクラス
+	 * */
 	private static class FibonacciClass {
 		/** フィボナッチ数列の項数 */
 		private Integer term;
